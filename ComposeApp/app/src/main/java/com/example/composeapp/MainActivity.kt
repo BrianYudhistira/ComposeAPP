@@ -1,6 +1,6 @@
 package com.example.composeapp
 
-import ProfileContent
+import aboutContent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     // Set up NavHost with the NavController
                     NavHost(navController = navController, startDestination = "listHeroApp") {
                         composable("listHeroApp") { ListHeroAPP(navController = navController) }
-                        composable("profileContent") { ProfileContent() }
+                        composable("profileContent") { aboutContent() }
                         composable("description/{id}") { backStackEntry ->
                             val infgameId = backStackEntry.arguments?.getString("id")
                             val infgame = List_HERO.ListHERO.find { it.id == infgameId }

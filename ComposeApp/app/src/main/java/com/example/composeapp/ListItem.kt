@@ -44,13 +44,13 @@ fun ListHeroAPP(
     Column(modifier = modifier.fillMaxSize()) {
         TopAppBar(
             title = {
-                Text("List HP App")
+                Text("List HP APP")
             },
             actions = {
                 IconButton(onClick = { navController.navigate("profileContent") }) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_profile),
-                        contentDescription = null
+                        contentDescription =" about_page"
                     )
                 }
             }
@@ -61,6 +61,7 @@ fun ListHeroAPP(
                     HeroListItem(
                         name = hero.name,
                         photoUrl = hero.photoUrl,
+                        description = hero.description,
                         onClick = {
                             navController.navigate("description/${hero.id}")
                         },
@@ -85,6 +86,7 @@ fun ListHeroAPPReview() {
 fun HeroListItem(
     name: String,
     photoUrl: String,
+    description: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -101,14 +103,22 @@ fun HeroListItem(
                 .size(100.dp)
                 .clip(CircleShape)
         )
-        Text(
-            text = name,
-            fontWeight = FontWeight.Medium,
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
                 .weight(1f)
                 .padding(start = 16.dp)
-        )
+        ) {
+            Text(
+                text = name,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Text(
+                text = description.split(" ").take(10).joinToString(" "),
+                fontWeight = FontWeight.Light,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
@@ -119,6 +129,7 @@ fun HeroListItemPreview() {
         HeroListItem(
             name = "H.O.S. Cokroaminoto",
             photoUrl = "",
+            description = "hoooo",
             onClick = {
                 // Handle click action in preview (e.g., print a message)
                 println("Item clicked in preview")

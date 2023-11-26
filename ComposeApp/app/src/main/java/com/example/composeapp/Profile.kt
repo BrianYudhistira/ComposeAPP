@@ -27,14 +27,14 @@ import com.example.composeapp.ui.theme.ComposeAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileContent() {
+fun aboutContent() {
     val onBackPressedDispatcher = LocalOnBackPressedDispatcherOwner.current ?.onBackPressedDispatcher
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
         TopAppBar(
-            title = { Text(text = "Profile") },
+            title = { Text(text = "About") },
             navigationIcon = {
                 IconButton(onClick = {
                     onBackPressedDispatcher?.onBackPressed()
@@ -49,7 +49,7 @@ fun ProfileContent() {
                 .padding(16.dp)
         ) {
             item {
-                ProfileHeader()
+                AboutHeader()
             }
 
         }
@@ -57,7 +57,7 @@ fun ProfileContent() {
 }
 
 @Composable
-fun ProfileHeader() {
+fun AboutHeader() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -84,7 +84,7 @@ fun ProfileHeader() {
 @Composable
 fun DefaultPreview() {
     ComposeAppTheme {
-        ProfileContent()
+        aboutContent()
     }
 }
 
